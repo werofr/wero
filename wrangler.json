@@ -1,0 +1,36 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "wero",
+	"main": "./src/llms-txt-worker/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"upload_source_maps": true,
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./dist/client",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api", "/api/*", "/llms.txt", "/llms-full.txt"]
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "ENRICHMENT_CACHE",
+			"id": "ef9c8406c4ef41ef8667eb590b07c538"
+		}
+	],
+	"vars": {
+		"MERCHANT_NAME": "My Store",
+		"MERCHANT_DESCRIPTION": "Product catalog powered by Commerce llms.txt",
+		"STORE_CURRENCY": "USD",
+		"SHIPPING_POLICY": "https://crdt9werotd.werost.workers.dev/",
+		"RETURN_POLICY": "https://crdt9werotd.werost.workers.dev/",
+		"SHOPIFY_STORE_DOMAIN": "https://crdt9werotd.werost.workers.dev/",
+		"MERCHANT_VERTICAL": "general retail",
+		"ENRICHMENT_CACHE_TTL": "3600",
+		"AI_MODEL": "@cf/google/gemma-4-26b-a4b-it"
+	}
+}
